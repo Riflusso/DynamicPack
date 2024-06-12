@@ -2,13 +2,7 @@ package com.adamcalculator.dynamicpack.client;
 
 import com.adamcalculator.dynamicpack.DynamicPackMod;
 import com.adamcalculator.dynamicpack.SharedConstrains;
-import com.adamcalculator.dynamicpack.pack.Pack;
 import com.adamcalculator.dynamicpack.status.StatusChecker;
-import com.adamcalculator.dynamicpack.sync.SyncThread;
-import com.adamcalculator.dynamicpack.sync.SyncingTask;
-import com.adamcalculator.dynamicpack.sync.state.StateDownloading;
-import com.adamcalculator.dynamicpack.sync.state.StateFileDeleted;
-import com.adamcalculator.dynamicpack.sync.state.SyncProgressState;
 import com.adamcalculator.dynamicpack.util.Out;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -70,9 +64,6 @@ public abstract class DynamicPackModBase extends DynamicPackMod {
             player.sendSystemMessage(Component.literal("Debug message on world join").withStyle(ChatFormatting.GREEN));
         }
 
-
-
-
         if (player == null) {
             Out.warn("player == null on world join");
 
@@ -95,49 +86,13 @@ public abstract class DynamicPackModBase extends DynamicPackMod {
     }
 
     @Override
-    public void startSyncThread() {
-        new SyncThread(() -> createSyncTask(false)).start();
-    }
-
-    @Override
     public void startManuallySync() {
-        Thread thread = new Thread(() -> createSyncTask(true).run());
+        Thread thread = new Thread(() -> {
+//            createSyncTask(true).run();
+            Out.println("Haha debug!");
+        });
         thread.setName("DynamicPack-ManuallySyncThread" + (DynamicPackMod.manuallySyncThreadCounter++));
         thread.start();
-    }
-
-    private SyncingTask createSyncTask(boolean manually) {
-        return new SyncingTask(manually) {
-            @Override
-            public void onSyncStart() {
-                if (manually) setToastContent(Component.literal("DynamicPack"), Component.translatable("dynamicpack.toast.syncStarted"));
-            }
-
-            @Override
-            public void onSyncDone(boolean reloadRequired) {
-                if (manually || reloadRequired) {
-                    setToastContent(Component.literal("DynamicPack"), Component.translatable("dynamicpack.toast.done"));
-                }
-                if (reloadRequired) {
-                    tryToReloadResources();
-                }
-            }
-
-            @Override
-            public void onStateChanged(Pack pack, SyncProgressState state) {
-                if (!manually) return;
-
-                if (state instanceof StateDownloading downloading) {
-                    setToastContent(Component.translatable("dynamicpack.toast.pack.state.downloading.title", pack.getName()), Component.translatable("dynamicpack.toast.pack.state.downloading.description", downloading.getPercentage(), downloading.getName()));
-
-                } else if (state instanceof StateFileDeleted deleted) {
-                    setToastContent(Component.translatable("dynamicpack.toast.pack.state.deleting.title", pack.getName()), Component.translatable("dynamicpack.toast.pack.state.deleting.description", deleted.getPath().getFileName().toString()));
-
-                } else {
-                    setToastContent(Component.translatable("dynamicpack.toast.pack.state.unknown.title"), Component.translatable("dynamicpack.toast.pack.state.unknown.description"));
-                }
-            }
-        };
     }
 
     @Override
@@ -161,7 +116,8 @@ public abstract class DynamicPackModBase extends DynamicPackMod {
         return true;
     }
 
-    private void tryToReloadResources() {
+    @Override
+    public void needResourcesReload() {
         Minecraft client = Minecraft.getInstance();
         if (client != null) {
             if (client.level == null) {
