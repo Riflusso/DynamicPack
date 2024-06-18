@@ -6,9 +6,6 @@ import com.adamcalculator.dynamicpack.pack.DynamicResourcePack;
 import com.adamcalculator.dynamicpack.status.StatusChecker;
 import com.adamcalculator.dynamicpack.sync.SyncThread;
 import com.adamcalculator.dynamicpack.util.Out;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.internal.LazilyParsedNumber;
 import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
@@ -124,14 +121,12 @@ public abstract class DynamicPackModBase extends DynamicPackMod {
     @Override
     public void needResourcesReload() {
         Minecraft client = Minecraft.getInstance();
-        if (client != null) {
-            if (client.level == null) {
-                client.execute(client::reloadResourcePacks);
+        if (client != null && client.level == null) {
+            client.execute(client::reloadResourcePacks);
 
-            } else {
-                setToastContent(Component.translatable("dynamicpack.toast.needReload"),
-                        Component.translatable("dynamicpack.toast.needReload.description"));
-            }
+        } else {
+            setToastContent(Component.translatable("dynamicpack.toast.needReload"),
+                    Component.translatable("dynamicpack.toast.needReload.description"));
         }
     }
 }
