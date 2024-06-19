@@ -18,7 +18,7 @@ public class SharedConstrains {
 
     public static final long VERSION_BUILD = 35;
     public static final String VERSION_NAME_MOD = "1.1";
-    public static final String VERSION_NAME_BRANCH = "mc1.20.1";
+    public static final String VERSION_NAME_BRANCH = "mc1.21";
     public static final String VERSION_NAME =  VERSION_NAME_MOD + "+" + VERSION_NAME_BRANCH + (DEBUG ? "-debug" : "");
     public static final String MOD_ID = "dynamicpack";
 
