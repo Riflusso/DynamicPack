@@ -15,12 +15,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.io.File;
 import java.util.zip.ZipFile;
 
-@Mixin(FilePackResources.class)
+@Mixin(FilePackResources.SharedZipFileAccess.class)
 public abstract class FilePackResourcesMixin implements FilePackResourcesAccessor {
-    @Shadow @Final private File file;
+
     @Unique private boolean dynamicpack$opened;
 
     @Shadow public abstract void close();
+
+    @Shadow @Final
+    File file;
 
     @Inject(at = @At("RETURN"), method = "getOrCreateZipFile")
     public void dynamicpack_return$getOrCreateZipFile(CallbackInfoReturnable<ZipFile> cir) {

@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id 'maven-publish'
-    id 'fabric-loom' version '1.6-SNAPSHOT'
+    id 'fabric-loom' version '1.7-SNAPSHOT'
 }
 
 base {
@@ -11,8 +11,8 @@ base {
 
 
 dependencies {
-    modImplementation "com.terraformersmc:modmenu:9.2.0"
-    modImplementation "dev.isxander:yet-another-config-lib:3.5.0+1.20.4-fabric"
+    modImplementation "com.terraformersmc:modmenu:11.0.0"
+    modImplementation "dev.isxander:yet-another-config-lib:3.5.0+1.21-fabric"
 
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
