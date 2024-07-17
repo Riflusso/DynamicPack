@@ -14,23 +14,23 @@ public class PackMixinHelper {
     private static final ResourceLocation BUTTON_WARNING_TEXTURE = ResourceLocation.tryBuild("dynamicpack", "select_button_warning.png");
     private static final ResourceLocation BUTTON_SYNCING_TEXTURE = ResourceLocation.tryBuild("dynamicpack", "select_button_syncing.png");
 
-    private static void drawTexture(GuiGraphics context, DynamicResourcePack pack, int x, int y, int i, int j, boolean hovered) {
+    public static void drawTexture(GuiGraphics context, DynamicResourcePack pack, int x, int y, boolean hovered) {
         Exception latestException = pack.getLatestException();
         if (pack.isSyncing()) {
-            Compat.drawTexture(context, BUTTON_TEXTURE, x + 174, y+16, 0.0F, ((i >= 174 && j >= 16 && hovered) ? 16f : 0f), 16, 16, 16, 32);
+            Compat.drawTexture(context, BUTTON_TEXTURE, x, y, 0.0F, (hovered ? 16f : 0f), 16, 16, 16, 32);
 
 
             double alpha = System.currentTimeMillis() / 200d;
             int xshift = (int) (Math.sin(alpha) * 6.9d);
             int yshift = (int) (Math.cos(alpha) * 6.9d);
 
-            Compat.drawTexture(context, BUTTON_SYNCING_TEXTURE, x + 174 + xshift+6, y+16 + yshift+6, 0.0F, ((i >= 174 && j >= 16 && hovered) ? 16f : 0f), 4, 4, 16, 32);
+            Compat.drawTexture(context, BUTTON_SYNCING_TEXTURE, x + xshift+6, y + yshift+6, 0.0F, (hovered ? 16f : 0f), 4, 4, 16, 32);
 
         } else if (latestException != null) {
-            Compat.drawTexture(context, BUTTON_WARNING_TEXTURE, x + 174, y+16, 0.0F, ((i >= 174 && j >= 16 && hovered) ? 16f : 0f), 16, 16, 16, 32);
+            Compat.drawTexture(context, BUTTON_WARNING_TEXTURE, x, y+16, 0.0F, (hovered ? 16f : 0f), 16, 16, 16, 32);
 
         } else {
-            Compat.drawTexture(context, BUTTON_TEXTURE, x + 174, y+16, 0.0F, ((i >= 174 && j >= 16 && hovered) ? 16f : 0f), 16, 16, 16, 32);
+            Compat.drawTexture(context, BUTTON_TEXTURE, x, y, 0.0F, (hovered ? 16f : 0f), 16, 16, 16, 32);
         }
     }
 
@@ -40,7 +40,7 @@ public class PackMixinHelper {
         if (pack != null) {
             int i = mouseX - x;
             int j = mouseY - y;
-            drawTexture(context, pack, x, y, i, j, hovered);
+            drawTexture(context, pack, x, y, hovered);
         }
     }
 
@@ -59,7 +59,7 @@ public class PackMixinHelper {
         }
     }
 
-    private static void openPackScreen(DynamicResourcePack pack) {
+    public static void openPackScreen(DynamicResourcePack pack) {
         Minecraft.getInstance().setScreen(new DynamicPackScreen(Minecraft.getInstance().screen, pack));
     }
 

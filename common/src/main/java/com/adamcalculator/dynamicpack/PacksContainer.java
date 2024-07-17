@@ -3,6 +3,7 @@ package com.adamcalculator.dynamicpack;
 import com.adamcalculator.dynamicpack.pack.DynamicResourcePack;
 import com.adamcalculator.dynamicpack.util.*;
 
+import javax.annotation.Nullable;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -108,5 +109,10 @@ public class PacksContainer {
 
     public DynamicResourcePack[] getPacks() {
         return packs.values().toArray(new DynamicResourcePack[0]);
+    }
+
+    @Nullable
+    public DynamicResourcePack getByFileName(String filename) {
+        return packs.getOrDefault(filename, null);
     }
 }

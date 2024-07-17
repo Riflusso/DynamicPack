@@ -106,12 +106,8 @@ public abstract class DynamicPackMod {
 
 	@Nullable
 	public static DynamicResourcePack getDynamicPackByMinecraftName(String name) {
-		for (DynamicResourcePack pack : getPacksContainer().getPacks()) {
-			if (pack.getMinecraftId().equals(name)) {
-				return pack;
-			}
-		}
-		return null;
+		// remove "file/"
+		return getPacksContainer().getByFileName(name.substring(5));
 	}
 
 	/**

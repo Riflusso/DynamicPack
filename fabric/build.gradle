@@ -12,13 +12,15 @@ base {
 
 dependencies {
     modImplementation "com.terraformersmc:modmenu:11.0.0"
-    modImplementation "dev.isxander:yet-another-config-lib:3.5.0+1.21-fabric"
+    modImplementation("dev.isxander:yet-another-config-lib:3.5.0+1.21-fabric")
+    include(modImplementation("io.gitlab.jfronny.libjf:libjf-resource-pack-entry-widgets-v0:3.17.0-SNAPSHOT"))
 
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+
     compileOnly project(":common")
 }
 
