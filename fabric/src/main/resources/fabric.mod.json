@@ -26,8 +26,7 @@
             "com.adamcalculator.dynamicpack.client.fabric.ModMenuIntegration"
         ],
         "libjf:resource_pack_entry_widget": [
-            "com.adamcalculator.dynamicpack.client.DynamicPackResourcePackEntryWidget",
-            "com.adamcalculator.dynamicpack.client.DynamicPackResourcePackEntryWidget2"
+            "com.adamcalculator.dynamicpack.client.DynamicPackResourcePackEntryWidget"
         ]
     },
     "accessWidener": "dynamicpack.accesswidener",

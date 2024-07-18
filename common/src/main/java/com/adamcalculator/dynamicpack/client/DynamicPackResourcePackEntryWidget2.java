@@ -17,7 +17,7 @@ public class DynamicPackResourcePackEntryWidget2 implements ResourcePackEntryWid
     public void render(PackSelectionModel.Entry entry1, GuiGraphics context, int x, int y, boolean hovered, float tickDelta) {
         DynamicResourcePack pack = DynamicPackMod.getInstance().getDynamicPackByMinecraftName(entry1.getId());
         if (pack != null) {
-            PackMixinHelper.drawTexture(context, pack, x, y, hovered);
+            PackMixinHelper.drawTexture(context, pack, x, y, !hovered);
         }
     }
 
@@ -33,14 +33,13 @@ public class DynamicPackResourcePackEntryWidget2 implements ResourcePackEntryWid
 
     @Override
     public int getY(PackSelectionModel.Entry pack, int rowHeight) {
-        return 16;
+        return 14;
     }
 
     @Override
     public int getXMargin(PackSelectionModel.Entry pack) {
-        return 16;
+        return 10;
     }
-
 
     @Override
     public void onClick(PackSelectionModel.Entry entry) {

@@ -27,7 +27,7 @@ public class PackMixinHelper {
             Compat.drawTexture(context, BUTTON_SYNCING_TEXTURE, x + xshift+6, y + yshift+6, 0.0F, (hovered ? 16f : 0f), 4, 4, 16, 32);
 
         } else if (latestException != null) {
-            Compat.drawTexture(context, BUTTON_WARNING_TEXTURE, x, y+16, 0.0F, (hovered ? 16f : 0f), 16, 16, 16, 32);
+            Compat.drawTexture(context, BUTTON_WARNING_TEXTURE, x, y, 0.0F, (hovered ? 16f : 0f), 16, 16, 16, 32);
 
         } else {
             Compat.drawTexture(context, BUTTON_TEXTURE, x, y, 0.0F, (hovered ? 16f : 0f), 16, 16, 16, 32);
