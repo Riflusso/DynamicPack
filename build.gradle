@@ -54,9 +54,10 @@ subprojects {
     }
 
     processResources {
+        var git_hash = getGitHash()
         def expandProps = [
-                "version"                      : version,
-                "git_head"                     : getGitHash(),
+                "version"                      : version + ((is_dev.toLowerCase() == "true" || is_dev == "1") ? "-DEV-" + git_hash : ""),
+                "git_head"                     : git_hash,
                 "group"                        : project.group, //Else we target the task's group.
                 "minecraft_version"            : minecraft_version,
                 "minecraft_version_range"      : minecraft_version_range,
