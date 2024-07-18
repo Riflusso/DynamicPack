@@ -21,6 +21,9 @@ jobs:
       contents: read
 
     steps:
+    - name: Set environment variable
+      run: echo "MY_SHA_TRIM={${{ github.sha }}:0:7}" >> $GITHUB_ENV
+    
     - uses: actions/checkout@v4
     - name: Set up JDK 21
       uses: actions/setup-java@v4
@@ -44,12 +47,12 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: dynamicpack-fabric-builds-${{ github.ref }}
+        name: dynamicpack-fabric-builds-${{ github.MY_SHA_TRIM }}
         path: fabric/build/libs/
 
     - uses: actions/upload-artifact@v4
       with:
-        name: dynamicpack-common-builds-${{ github.ref }}
+        name: dynamicpack-common-builds-${{ github.MY_SHA_TRIM }}
         path: common/build/libs/
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
