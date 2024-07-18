@@ -23,7 +23,7 @@ jobs:
     steps:
     - name: Set environment variable
       run: |
-        sha = ${{ github.sha }}
+        sha=${{ github.sha }}
         my_hash=${sha:0:7}
         echo "MY_SHA_TRIM=$my_hash" >> $GITHUB_ENV
     
