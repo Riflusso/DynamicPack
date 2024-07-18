@@ -44,9 +44,19 @@ subprojects {
         }
     }
 
+    def getGitHash = { ->
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-parse', '--short', 'HEAD'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+
     processResources {
         def expandProps = [
                 "version"                      : version,
+                "git_head"                     : getGitHash(),
                 "group"                        : project.group, //Else we target the task's group.
                 "minecraft_version"            : minecraft_version,
                 "minecraft_version_range"      : minecraft_version_range,

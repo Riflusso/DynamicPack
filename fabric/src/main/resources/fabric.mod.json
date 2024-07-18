@@ -37,9 +37,13 @@
     "depends": {
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
+        "libjf-resource-pack-entry-widgets-v0": "*",
         "yet_another_config_lib_v3": "*",
         "minecraft": "${fabric_minecraft_version}",
         "java": ">=17"
+    },
+    "custom": {
+        "dynamicpack:build_git_hash": "${git_head}"
     }
 }
   
