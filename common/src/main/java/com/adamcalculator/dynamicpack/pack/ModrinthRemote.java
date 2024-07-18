@@ -61,11 +61,16 @@ public class ModrinthRemote extends Remote {
             private JsonObject latestJson;
             private Optional<Boolean> isUpdateAvailable = Optional.empty();
             private long downloaded;
+            private long updateSize;
 
             @Override
             public void init(boolean ignoreCaches) throws Exception {
                 latestJson = parseModrinthLatestVersionJson();
                 latest = LatestModrinthVersion.ofJson(latestJson);
+
+                if (isUpdateAvailable()) {
+                    updateSize =  latest.size;
+                }
             }
 
             @Override
@@ -85,10 +90,7 @@ public class ModrinthRemote extends Remote {
 
             @Override
             public long getUpdateSize() {
-                if (isUpdateAvailable()) {
-                    return latest.size;
-                }
-                return 0;
+                return updateSize;
             }
 
             @Override
