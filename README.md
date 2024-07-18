@@ -5,6 +5,8 @@ A mod that will monitor the current version of your resource pack and download a
 [![Static Badge](https://img.shields.io/badge/Github-gray?logo=github)
 ](https://github.com/AdamCalculator/DynamicPack)
 
+[![Java CI with Gradle](https://github.com/AdamCalculator/DynamicPack/actions/workflows/gradle.yml/badge.svg)](https://github.com/AdamCalculator/DynamicPack/actions/workflows/gradle.yml)
+
 [![Banner](https://api.mcbanners.com/banner/saved/wveMrFfPsqwXbV.png)](https://modrinth.com/mod/dynamicpack)
 
 ## Documentation
