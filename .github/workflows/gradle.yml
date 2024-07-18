@@ -44,12 +44,12 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: dynamicpack-fabric-builds
+        name: dynamicpack-fabric-builds-${{ github.sha }}
         path: fabric/build/libs/
 
     - uses: actions/upload-artifact@v4
       with:
-        name: dynamicpack-common-builds
+        name: dynamicpack-common-builds-${{ github.sha }}
         path: common/build/libs/
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
