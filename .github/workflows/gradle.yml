@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - name: Set environment variable
-      run: echo "MY_SHA_TRIM={${{ github.sha }}:0:7}" >> $GITHUB_ENV
+      run: my_hash = {${{ github.sha }}:0:7} && echo ("MY_SHA_TRIM=" + my_hash) >> $GITHUB_ENV
     
     - uses: actions/checkout@v4
     - name: Set up JDK 21
