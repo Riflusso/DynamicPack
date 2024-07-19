@@ -20,6 +20,8 @@ A mod that will monitor the current version of your resource pack and download a
 * [zelda-music (modrinth)](https://modrinth.com/resourcepack/zelda-music)
 * [PawTotems (smp) (github)](https://github.com/Spilya/PawTotems/)
 * [SPPack (smp) (github)](https://github.com/aladairmaxwell/SP)
+* [Essentially Tweaked](https://modrinth.com/resourcepack/essentially-tweaked)
+* [Vanilla Leaves](https://modrinth.com/resourcepack/vanilla-leaves)
 
 ## Plans
 The mod is planned to support **any bootloader** and any version, but I don't have enough time right now. **I'm always happy to see new contributors!**
