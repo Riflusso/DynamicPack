@@ -146,4 +146,11 @@ public class GameStartSyncing extends Thread {
     private void unlock() {
         lockResourcesLoading = false;
     }
+
+    public double getPercentage() {
+        if (syncBuilder != null) {
+            return (double) syncBuilder.getUpdateSize() / (double) syncBuilder.getDownloadedSize() * 100d;
+        }
+        return 0;
+    }
 }
