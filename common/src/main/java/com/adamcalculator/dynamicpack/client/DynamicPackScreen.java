@@ -138,10 +138,10 @@ public class DynamicPackScreen extends Screen {
 
         hideSyncSpecButtons();
 
-        addRenderableWidget(Compat.createButton(CommonComponents.GUI_DONE, this::onClose, 150, 20, this.width / 2 + 4, this.height - 48));
+        addRenderableWidget(Compat.createButton(CommonComponents.GUI_DONE, this::onClose, 150, 20, this.width / 2 + 4, this.height - 20 - 6));
         addRenderableWidget(contentsButton = Compat.createButton(Component.translatable("dynamicpack.screen.pack.dynamic.contents"), () -> {
             Minecraft.getInstance().setScreen(new ContentsScreen(this, pack));
-        }, 150, 20, this.width / 2 + 4-160, this.height - 48));
+        }, 150, 20, this.width / 2 + 4-160+2, this.height - 20 - 6));
         contentsButton.visible = pack.getRemote() instanceof DynamicRepoRemote;
     }
 

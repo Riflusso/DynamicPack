@@ -115,8 +115,8 @@ public class ContentsScreen extends Screen {
     protected void init() {
         super.init();
         this.addWidget(this.contentsList = new ContentsList(this, this.minecraft));
-        this.addRenderableWidget(doneButton = Compat.createButton(CommonComponents.GUI_DONE, this::onClose, 150, 20, this.width / 2 - 155 + 160, this.height - 29));
-        this.addRenderableWidget(resetButton = Compat.createButton(Component.translatable("controls.reset"), this::reset, 150, 20, this.width / 2 - 155, this.height - 29));
+        this.addRenderableWidget(doneButton = Compat.createButton(CommonComponents.GUI_DONE, this::onClose, 150, 20, this.width / 2 + 4, this.height - 26));
+        this.addRenderableWidget(resetButton = Compat.createButton(Component.translatable("controls.reset"), this::reset, 150, 20, this.width / 2 + 4-160+2, this.height - 26));
         updateDoneButton();
     }
 
