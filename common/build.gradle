@@ -27,7 +27,7 @@ loom {
 
 dependencies {
     modImplementation("dev.isxander:yet-another-config-lib:3.5.0+1.21-fabric")
-    modImplementation("io.gitlab.jfronny.libjf:libjf-resource-pack-entry-widgets-v0:3.17.0-SNAPSHOT")
+    modImplementation("io.gitlab.jfronny.libjf:libjf-resource-pack-entry-widgets-v0:3.17.0")
 
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
