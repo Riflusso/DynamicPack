@@ -64,4 +64,5 @@ For other features (dynamic repos) visit [github wiki!](https://github.com/AdamC
 
 ## Donate
 The project is completely free and open under the MIT licence. You can help me by donating ❤️
+
 **Bitcoin:** `bc1qpc0q9ym7rnfatdh43c4jyf68znj8x2jae5j4cz`
