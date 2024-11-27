@@ -13,7 +13,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.gui.components.toasts.ToastComponent;
+import net.minecraft.client.gui.components.toasts.ToastManager;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -43,7 +43,7 @@ public abstract class DynamicPackModBase extends DynamicPackMod {
         }
 
         if (toast == null || (System.currentTimeMillis() - toastUpdated > 1000*5)) {
-            ToastComponent toastManager = Minecraft.getInstance().getToasts();
+            ToastManager toastManager = Minecraft.getInstance().getToastManager();
             toastManager.addToast(toast = new SystemToast(/*1.20.4 port*/new SystemToast.SystemToastId(5000), title, text));
         } else {
             toast.reset(title, text);
@@ -63,19 +63,19 @@ public abstract class DynamicPackModBase extends DynamicPackMod {
 
     public void onWorldJoinForUpdateChecks(LocalPlayer player) {
         if (SharedConstrains.isDebugMessageOnWorldJoin()) {
-            player.sendSystemMessage(Component.literal("Debug message on world join").withStyle(ChatFormatting.GREEN));
+            player.displayClientMessage(Component.literal("Debug message on world join").withStyle(ChatFormatting.GREEN), true);
         }
 
         if (player == null) {
             Out.warn("player == null on world join");
 
         } else if (!StatusChecker.isSafe()) {
-            player.sendSystemMessage(Component.translatable("dynamicpack.status_checker.not_safe", createDownloadComponent()));
+            player.displayClientMessage(Component.translatable("dynamicpack.status_checker.not_safe", createDownloadComponent()), true);
             setToastContent(Component.translatable("dynamicpack.status_checker.not_safe.toast.title"),
                     Component.translatable("dynamicpack.status_checker.not_safe.toast.description"));
 
         } else if (!StatusChecker.isFormatActual()) {
-            player.sendSystemMessage(Component.translatable("dynamicpack.status_checker.format_not_actual", createDownloadComponent()));
+            player.displayClientMessage(Component.translatable("dynamicpack.status_checker.format_not_actual", createDownloadComponent()), true);
 
         } else if (StatusChecker.isModUpdateAvailable()) {
             Out.println("DynamicPack mod update available: " + SharedConstrains.MODRINTH_URL);

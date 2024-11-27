@@ -41,9 +41,9 @@ public class PackRepositoryMixin {
                 }
 
                 try {
-                    RenderSystem.applyModelViewMatrix();
+//                    RenderSystem.applyModelViewMatrix();
                     RenderSystem.clearColor(0.074f + (((float)syncing.getPercentage() / 100f)), 0.04f, (float) (0.24f + (Math.sin(System.currentTimeMillis() / 300f) / 2)), 1f);
-                    RenderSystem.clear(16640, ON_OSX);
+                    RenderSystem.clear(16640);
                     GLFW.glfwSwapBuffers(client.getWindow().getWindow());
 
                 } catch (Exception e) {
