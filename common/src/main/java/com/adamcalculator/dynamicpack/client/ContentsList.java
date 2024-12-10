@@ -40,8 +40,8 @@ public class ContentsList extends ContainerObjectSelectionList<ContentsList.Cont
         }
     }
 
-    protected int getScrollbarPosition() {
-        return super.getScrollbarPosition() + 15;
+    protected int scrollBarX() {
+        return super.scrollBarX() + 15;
     }
 
     @Override
